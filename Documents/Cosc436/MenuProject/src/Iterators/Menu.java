@@ -17,6 +17,14 @@ public class Menu {
         menuItems = new MenuItem[listCapacity]; //creates a new array of object MenuItem of size 1.
     }
 
+    public MenuIterator getAllItemsIterator(){
+        return new AllItemsIterator(this,-1);
+    }
+
+    public MenuIterator getItemIterator(){
+        return new ItemIterator(this,0,"Main");
+    }
+
     public boolean addItem(MenuItem item){
         if(item == null)
             throw new NullPointerException(); //checks that an object was actually passed to the function
@@ -37,15 +45,7 @@ public class Menu {
         }
         menuItems = tempList;
     }
-    //test function for printing the menu....not what I want to use for real
-    public void printMenu(){
-        for(int i = 0;i<itemCount;i++){
-            System.out.println(menuItems[i].getItemName()
-            + ", " + menuItems[i].getCategory()
-            + ", " + menuItems[i].getHeartHealthy()
-            + ", $" + menuItems[i].getPrice());
-        }
-    }
+
 
 
 }

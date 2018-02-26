@@ -21,12 +21,12 @@ public class MenuItem {
         if(category == 1)
             return "Appetizer";
         else if(category == 2)
-            return "Dinner";
+            return "Main";
         else
             return "Dessert";
     }
     public String getHeartHealthy(){
-        if(heartHealthy == true)
+        if(heartHealthy)
             return "Heart healthy";
         else
             return "Not heart healthy";
