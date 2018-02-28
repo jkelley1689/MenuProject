@@ -1,6 +1,6 @@
 package Iterators;
 
-public class PriceIterator implements MenuIterator{
+class PriceIterator implements MenuIterator{
 
 
     private int currentIndex;

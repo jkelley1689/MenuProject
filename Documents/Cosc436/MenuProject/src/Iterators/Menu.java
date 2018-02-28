@@ -17,20 +17,21 @@ public class Menu {
         menuItems = new MenuItem[listCapacity]; //creates a new array of object MenuItem of size 1.
     }
 
+    //Iterator call functions
     public MenuIterator getAllItemsIterator(){
         return new AllItemsIterator(this,0);
     }
 
-    public MenuIterator getItemIterator(){
-        return new ItemIterator(this,0,"Main");
+    public MenuIterator getItemIterator(String choice){
+        return new ItemIterator(this,0,choice);
     }
 
     public MenuIterator getHeartHealthyIterator(){
         return new HeartHealthyIterator(this,0,"Heart healthy");
     }
 
-    public MenuIterator getPriceIterator(){
-        return new PriceIterator(this,0,"11.00");
+    public MenuIterator getPriceIterator(String price){
+        return new PriceIterator(this,0,price);
     }
 
     public boolean addItem(MenuItem item){
@@ -52,6 +53,36 @@ public class Menu {
             tempList[i] = menuItems[i];
         }
         menuItems = tempList;
+    }
+    //functions for removing an item from the array
+    public boolean delete(MenuItem item){
+        int itemIndex = getIndex(item);
+
+        if(itemIndex == -1)
+            return false;
+        else
+            deleteItem(itemIndex);
+        return true;
+    }
+
+    private int getIndex(MenuItem item){
+        if(item == null)
+            throw new NullPointerException();
+        else {
+            for (int i = 0; i < itemCount; i++) {
+                if(menuItems[i].equals(item))
+                    return i;
+            }
+        }
+        return -1;
+    }
+    private MenuItem[] deleteItem(int itemIndex){
+        if(itemIndex < 0 || itemIndex > listCapacity)
+            throw new ArrayIndexOutOfBoundsException(itemIndex);
+        for(int i = itemIndex + 1;i<itemCount;i++){
+            menuItems[i - 1] = menuItems[i];
+        }
+        return menuItems;
     }
 
 
