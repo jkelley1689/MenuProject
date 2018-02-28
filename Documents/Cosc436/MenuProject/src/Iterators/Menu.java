@@ -18,11 +18,19 @@ public class Menu {
     }
 
     public MenuIterator getAllItemsIterator(){
-        return new AllItemsIterator(this,-1);
+        return new AllItemsIterator(this,0);
     }
 
     public MenuIterator getItemIterator(){
         return new ItemIterator(this,0,"Main");
+    }
+
+    public MenuIterator getHeartHealthyIterator(){
+        return new HeartHealthyIterator(this,0,"Heart healthy");
+    }
+
+    public MenuIterator getPriceIterator(){
+        return new PriceIterator(this,0,"11.00");
     }
 
     public boolean addItem(MenuItem item){

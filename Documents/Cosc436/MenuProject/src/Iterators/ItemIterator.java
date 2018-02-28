@@ -5,7 +5,7 @@ class ItemIterator implements MenuIterator{
     private int currentIndex;
     private Menu list;
     private String itemCategory;
-    private MenuItem validCategory;
+    private MenuItem validItem;
 
     public ItemIterator(Menu list, int startIndex,String itemCategory){
         currentIndex = startIndex;
@@ -22,14 +22,14 @@ class ItemIterator implements MenuIterator{
 
 
     public MenuItem nextItem() {
-        if (list.menuItems[currentIndex].getCategory().equals(itemCategory)) {
-            validCategory = list.menuItems[currentIndex];
+        if (hasNext() && list.menuItems[currentIndex].getCategory().equals(itemCategory)) {
+            validItem = list.menuItems[currentIndex];
             currentIndex++;
         } else if (hasNext()) {
             currentIndex++;
             nextItem();
         }
-        return validCategory;
+        return validItem;
     }
 
 

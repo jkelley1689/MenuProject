@@ -4,6 +4,7 @@ class AllItemsIterator implements MenuIterator{
 
     private int currentIndex;
     private Menu list;
+    private MenuItem item;
 
     public AllItemsIterator(Menu list,int startIndex){
         currentIndex = startIndex;
@@ -12,7 +13,7 @@ class AllItemsIterator implements MenuIterator{
 
 
     public boolean hasNext() {
-        if(currentIndex < list.menuItems.length && list.menuItems[currentIndex + 1] != null)
+        if(currentIndex < list.menuItems.length && list.menuItems[currentIndex] != null)
             return true;
         else
             return false;
@@ -20,7 +21,8 @@ class AllItemsIterator implements MenuIterator{
 
 
     public MenuItem nextItem() {
+        item = list.menuItems[currentIndex];
         currentIndex += 1;
-        return list.menuItems[currentIndex];
+        return item;
     }
 }
